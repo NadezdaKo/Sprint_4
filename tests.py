@@ -138,4 +138,20 @@ def test_delete_book_from_favorites(self):
     assert book_name not in self.books_collector.favorites
 
 
+books_collector = BooksCollector()
+
+# Тест на получение списка избранных книг
+def test_get_list_of_favorites_books(self):
+    # Добавляем несколько книг в избранное
+    self.books_collector.add_book_in_favorites('Война и мир')
+    self.books_collector.add_book_in_favorites('Шрек')
+        
+    # Получаем список избранных книг
+    favorites_list = self.books_collector.get_list_of_favorites_books()
+        
+    # Проверяем корректность списка
+    assert len(favorites_list) == 2
+    assert 'Война и мир' in favorites_list
+    assert 'Шрек' in favorites_list
+
 
