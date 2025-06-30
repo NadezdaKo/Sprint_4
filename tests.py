@@ -22,3 +22,33 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+
+
+import pytest
+
+books_collector = BooksCollector()
+
+# инициализации объекта перед каждым тестом
+
+@pytest.fixture
+def collector(self):
+    return BooksCollector()
+    
+# Тесты для add_new_book (валидация)
+
+@pytest.mark.parametrize('name, expected', [
+    ('Война и мир', True),
+    ('X' * 41, False),  # 41 символ
+    ('', False),  # пустая строка
+    ('@&^', False)
+    ])
+def test_add_new_book_validation(self, collector, name, expected):
+    collector.add_new_book(name)
+    assert (name in collector.books_genre) == expected
+
+# проверка добавления одной и той же книги 
+
+def test_add_duplicate_book(self, collector):
+    collector.add_new_book('Дубровский')
+    collector.add_new_book('Дубровский')
+    assert len(collector.books_genre) == 1
