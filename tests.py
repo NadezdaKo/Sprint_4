@@ -33,7 +33,7 @@ books_collector = BooksCollector()
 @pytest.fixture
 def collector(self):
     return BooksCollector()
-    
+   
 # Тесты для add_new_book (валидация)
 
 @pytest.mark.parametrize('name, expected', [
@@ -46,9 +46,31 @@ def test_add_new_book_validation(self, collector, name, expected):
     collector.add_new_book(name)
     assert (name in collector.books_genre) == expected
 
+
+books_collector = BooksCollector()
+
 # проверка добавления одной и той же книги 
 
 def test_add_duplicate_book(self, collector):
     collector.add_new_book('Дубровский')
     collector.add_new_book('Дубровский')
     assert len(collector.books_genre) == 1
+
+
+books_collector = BooksCollector()
+
+# Тесты для set_book_genre (жанр книги)
+def test_set_valid_genre_true(self, collector):
+    collector.add_new_book('Метро 2033')
+    collector.set_book_genre('Метро 2033', 'Фантастика')
+    assert collector.get_book_genre('Метро 2033') == 'Фантастика'
+    
+
+books_collector = BooksCollector()
+
+def test_set_invalid_genre_false(self, collector):
+    collector.add_new_book('Грозовой перевал')
+    collector.set_book_genre('Грозовой перевал', 'Роман')  # недопустимый жанр
+    assert collector.get_book_genre('Грозовой перевал') == ''
+
+
