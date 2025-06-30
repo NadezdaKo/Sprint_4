@@ -90,7 +90,7 @@ def test_get_book_genre_add_book_with_genre_get_genre(self):
     assert received_genre == genre, f"Ожидался жанр {genre}, но получен {received_genre}"
 
 
-    books_collector = BooksCollector()
+books_collector = BooksCollector()
 
 # Тесты для get_books_with_specific_genre (книги с определенным жанром)
 def test_get_books_by_genre(self, collector):
