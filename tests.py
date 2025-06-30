@@ -64,7 +64,7 @@ def test_set_valid_genre_true(self, collector):
     collector.add_new_book('Метро 2033')
     collector.set_book_genre('Метро 2033', 'Фантастика')
     assert collector.get_book_genre('Метро 2033') == 'Фантастика'
-    
+
 
 books_collector = BooksCollector()
 
@@ -74,3 +74,17 @@ def test_set_invalid_genre_false(self, collector):
     assert collector.get_book_genre('Грозовой перевал') == ''
 
 
+books_collector = BooksCollector()
+
+# получаем жанр книги по её имени
+def test_get_book_genre_add_book_with_genre_get_genre(self):
+
+    # Добавляем книгу с жанром
+    book_name = 'Пункт назначения'
+    genre = 'Ужасы'
+    books_collector.add_new_book(book_name)
+    books_collector.set_book_genre(book_name, genre)
+    received_genre = books_collector.get_book_genre(book_name) # Получаем жанр книги
+    
+    # Проверяем, что полученный жанр соответствует установленному
+    assert received_genre == genre, f"Ожидался жанр {genre}, но получен {received_genre}"
