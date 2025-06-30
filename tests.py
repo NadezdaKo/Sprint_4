@@ -113,3 +113,15 @@ def test_get_books_for_children(self, collector):
     assert 'Сияние' not in collector.get_books_for_children()
 
 
+books_collector = BooksCollector()
+
+# Тест на добавление книги в избранное
+def test_add_book_in_favorites(self):
+    book_name = 'Война и мир'
+
+     # Проверяем успешное добавление
+    self.books_collector.add_book_in_favorites(book_name)
+    assert book_name in self.books_collector.favorites
+
+
+    
