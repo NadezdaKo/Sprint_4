@@ -155,3 +155,9 @@ def test_get_list_of_favorites_books(self):
     assert 'Шрек' in favorites_list
 
 
+books_collector = BooksCollector()
+
+# Тест на работу с пустым списком избранного
+def test_empty_favorites_list(self):
+    # Проверяем пустой список
+    assert self.books_collector.get_list_of_favorites_books() == []
