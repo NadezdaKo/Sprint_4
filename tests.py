@@ -124,4 +124,18 @@ def test_add_book_in_favorites(self):
     assert book_name in self.books_collector.favorites
 
 
-    
+books_collector = BooksCollector()
+
+# Тест на удаление книги из избранного
+def test_delete_book_from_favorites(self):
+    book_name = 'Грозовой перевал'
+        
+    # Добавляем книгу для тестирования удаления
+    self.books_collector.add_book_in_favorites(book_name)
+        
+    # Удаляем книгу и проверяем результат
+    self.books_collector.delete_book_from_favorites(book_name)
+    assert book_name not in self.books_collector.favorites
+
+
+
