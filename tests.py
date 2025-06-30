@@ -101,3 +101,15 @@ def test_get_books_by_genre(self, collector):
     assert collector.get_books_with_specific_genre('Фантастика') == ['Аватар']
 
 
+books_collector = BooksCollector()
+
+# Тесты для get_books_for_children (подходящие детям)
+def test_get_books_for_children(self, collector):
+    collector.add_new_book('Шрек')
+    collector.add_new_book('Сияние')
+    collector.set_book_genre('Шрек', 'Мультфильмы')
+    collector.set_book_genre('Сияние', 'Ужасы')
+    assert 'Шрек' in collector.get_books_for_children()
+    assert 'Сияние' not in collector.get_books_for_children()
+
+
