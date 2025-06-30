@@ -88,3 +88,16 @@ def test_get_book_genre_add_book_with_genre_get_genre(self):
     
     # Проверяем, что полученный жанр соответствует установленному
     assert received_genre == genre, f"Ожидался жанр {genre}, но получен {received_genre}"
+
+
+    books_collector = BooksCollector()
+
+# Тесты для get_books_with_specific_genre (книги с определенным жанром)
+def test_get_books_by_genre(self, collector):
+    collector.add_new_book('Аватар')
+    collector.add_new_book('Оно')
+    collector.set_book_genre('Аватар', 'Фантастика')
+    collector.set_book_genre('Оно', 'Ужасы')
+    assert collector.get_books_with_specific_genre('Фантастика') == ['Аватар']
+
+
