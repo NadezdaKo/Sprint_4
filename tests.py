@@ -26,6 +26,7 @@ class TestBooksCollector:
 
 import pytest
 
+from conftest import books_collector
 
 # Тесты для add_new_book (валидация)
 
@@ -40,7 +41,7 @@ def test_add_new_book_validation(self, collector, name, expected):
     assert (name in collector.books_genre) == expected
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # проверка добавления одной и той же книги 
 
@@ -50,7 +51,7 @@ def test_add_duplicate_book(self, collector):
     assert len(collector.books_genre) == 1
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # Тесты для set_book_genre (жанр книги)
 def test_set_valid_genre_true(self, collector):
@@ -59,7 +60,7 @@ def test_set_valid_genre_true(self, collector):
     assert collector.get_book_genre('Метро 2033') == 'Фантастика'
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 def test_set_invalid_genre_false(self, collector):
     collector.add_new_book('Грозовой перевал')
@@ -67,7 +68,7 @@ def test_set_invalid_genre_false(self, collector):
     assert collector.get_book_genre('Грозовой перевал') == ''
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # получаем жанр книги по её имени
 def test_get_book_genre_add_book(self):
@@ -83,7 +84,7 @@ def test_get_book_genre_add_book(self):
     assert received_genre == genre, f"Ожидался жанр {genre}, но получен {received_genre}"
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # Тесты для get_books_with_specific_genre (книги с определенным жанром)
 def test_get_books_by_genre(self, collector):
@@ -94,7 +95,30 @@ def test_get_books_by_genre(self, collector):
     assert collector.get_books_with_specific_genre('Фантастика') == ['Аватар']
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
+
+# Проверка метода get_books_genre 
+
+def test_get_books_genre(self, books_collector):
+        # Добавляем книги в словарь
+    books_collector.add_new_book('Оно')
+    books_collector.set_book_genre('Оно', 'Ужасы')
+        
+    books_collector.add_new_book('Аватар')
+    books_collector.set_book_genre('Аватар', 'Фантастика')
+        
+        # Получаем словарь жанров
+    genres_dict = books_collector.get_books_genre()
+        
+        # Проверяем корректность результата
+    expected_genres = {
+            'Оно': 'Ужасы',
+            'Аватар': 'Фантастика'
+        }
+    assert genres_dict == expected_genres
+
+
+from conftest import books_collector
 
 # Тесты для get_books_for_children (подходящие детям)
 def test_get_books_for_children(self, collector):
@@ -106,7 +130,7 @@ def test_get_books_for_children(self, collector):
     assert 'Сияние' not in collector.get_books_for_children()
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # Тест на добавление книги в избранное
 def test_add_book_in_favorites(self):
@@ -117,7 +141,7 @@ def test_add_book_in_favorites(self):
     assert book_name in self.books_collector.favorites
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # Тест на удаление книги из избранного
 def test_delete_book_from_favorites(self):
@@ -131,7 +155,7 @@ def test_delete_book_from_favorites(self):
     assert book_name not in self.books_collector.favorites
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # Тест на получение списка избранных книг
 def test_get_list_of_favorites_books(self):
@@ -148,7 +172,7 @@ def test_get_list_of_favorites_books(self):
     assert 'Шрек' in favorites_list
 
 
-books_collector = BooksCollector()
+from conftest import books_collector
 
 # Тест на работу с пустым списком избранного
 def test_empty_favorites_list(self):
