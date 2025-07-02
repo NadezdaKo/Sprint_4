@@ -25,13 +25,11 @@ class TestBooksCollector:
 
 
 import pytest
-
-books_collector = BooksCollector()
-
 # инициализации объекта перед каждым тестом
 
 @pytest.fixture
-def collector(self):
+def books_collector(self):
+    books_collector = BooksCollector()
     return BooksCollector()
    
 # Тесты для add_new_book (валидация)
