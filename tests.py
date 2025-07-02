@@ -26,7 +26,7 @@ class TestBooksCollector:
 
 import pytest
 
-   
+
 # Тесты для add_new_book (валидация)
 
 @pytest.mark.parametrize('name, expected', [
@@ -70,7 +70,7 @@ def test_set_invalid_genre_false(self, collector):
 books_collector = BooksCollector()
 
 # получаем жанр книги по её имени
-def test_get_book_genre_add_book_with_genre_get_genre(self):
+def test_get_book_genre_add_book(self):
 
     # Добавляем книгу с жанром
     book_name = 'Пункт назначения'
