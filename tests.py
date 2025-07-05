@@ -74,7 +74,7 @@ class TestBooksCollector:
         received_genre = books_collector.get_book_genre(book_name) # Получаем жанр книги
         
         # Проверяем, что полученный жанр соответствует установленному
-        assert received_genre == books_collector.get_books_genre[book_name], f"Ожидался жанр {genre}, но получен {received_genre}"
+        assert received_genre == books_collector.books_genre[book_name], f"Ожидался жанр {genre}, но получен {received_genre}"
 
 
     # Тесты для get_books_with_specific_genre (книги с определенным жанром)
