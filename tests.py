@@ -121,7 +121,6 @@ class TestBooksCollector:
     def test_add_book_in_favorites(self, books_collector):
         book_name = 'Война и мир'
         books_collector.add_new_book(book_name)  # Добавляем книгу в каталог
-        books_collector.set_book_genre(book_name, 'Роман')  # Устанавливаем жанр
 
         # Проверяем успешное добавление
         books_collector.add_book_in_favorites(book_name)
